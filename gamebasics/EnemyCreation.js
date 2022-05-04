@@ -41,5 +41,9 @@ export default class EnemyCreation {
         return this.enemies.checkCollision(player)
     }
 
+    clear(){
+        this.enemies.clear()
+    }
+
 
 }

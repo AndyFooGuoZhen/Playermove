@@ -1,16 +1,14 @@
-import Player from "./Player.js";
-export default class Enemy {
+import Sprite from "./Sprite.js";
+export default class Enemy extends Sprite {
     width;
     height;
-    constructor ({position, color, speed, canvas, player}) {
-        this.position = position
-        this.color = color
+    constructor ({position,imgSrc, speed, canvas, size, player}) {
+        super({position, canvas, imgSrc, size})
         this.speed = speed
         this.ctx = canvas.getContext('2d')
         this.player = player
-        this.width = 70
+        this.width = 100
         this.height = 90
-        this.canvas = canvas
     }
 
     update() {
@@ -24,8 +22,7 @@ export default class Enemy {
                 this.position.y += Math.min(Math.max(-(this.position.y - this.player.position.y), -1), 1)
             }
             else this.position.y += this.speed.y
-        this.ctx.fillStyle = this.color
-        this.ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
-        }
+        super.update()
+    }
     }
 }

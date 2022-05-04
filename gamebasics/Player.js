@@ -1,4 +1,6 @@
-export default class Player {
+import Sprite from "./Sprite.js";
+
+export default class Player extends Sprite {
     delay = 13
     bulletSpeed = 8;
     playerSpeed = 5
@@ -33,14 +35,15 @@ export default class Player {
         }   
     }
 
-    constructor({position, color, speed, cartridge, canvas}) {
-        this.position = position
-        this.color = color
+    constructor({position, size, speed, cartridge, imgSrc, canvas}) {
+        super({position, imgSrc, canvas, size})
+
         this.speed = speed
-        this.width = 70
-        this.height = 90
         this.cartridge = cartridge
-        this.ctx = canvas.getContext('2d')
+        this.health = 3
+
+        this.width = 100
+        this.height = 120
 
         document.addEventListener("keydown", this.keydown)
         document.addEventListener("keyup", this.keyup)
@@ -49,12 +52,9 @@ export default class Player {
 
     update() {
         this.move()
-
         this.position.x += this.speed.x
         this.position.y += this.speed.y
-        this.ctx.fillStyle = this.color
-        this.ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
-
+        super.update()
         this.shoot()
 
     }
@@ -105,10 +105,10 @@ export default class Player {
     }
 
     checkCollision(sprite){
-        return (this.position.x < sprite.position.x + sprite.width &&
-            this.position.x + this.width > sprite.position.x &&
-            this.position.y < sprite.position.y + sprite.height &&
-            this.position.y + this.height > sprite.position.y)
+        return (this.position.x < sprite.position.x + sprite.width + 10 &&
+            this.position.x + this.width > sprite.position.x + 10 &&
+            this.position.y < sprite.position.y + sprite.height + 10 &&
+            this.position.y + this.height + 10> sprite.position.y)
     }
 
     shoot() {

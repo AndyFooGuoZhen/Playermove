@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color:black; width: 1180px; height: 1080px; margin-left: auto; margin-right: auto; text-align: center;">
-    <div style="position: relative; width: 1180px; height: 1080px">
-        <div style="position: absolute; right: 0px; bottom: 0px; width: 200px; height: 180px" >
-            <p id="score" style="color: yellow; font-family: 'Courier New', Courier, monospace; font-size: 50px;font-weight: bold;">0</p>
+
+<body style="width: 100%; height: 100%; position: absolute; background-color: black; ">
+    <div style="width: 80%; height: 100%; margin-left: auto; margin-right: auto; text-align: center;">
+        <div id="parent" style="position: relative; width: 100%; height: 100%">
+            <canvas></canvas>
+            <div style="position: absolute; right: 0px; bottom: 0px; width: 200px; height: 180px">
+                <p id="score"
+                    style="color: yellow; font-family: 'Courier New', Courier, monospace; font-size: 50px;font-weight: bold;">
+                    0
+                </p>
+            </div>
+
+            <div
+                style="border-radius:0.5em; position: absolute; left: 30px; top: 30px; width: 120px; height: 200px; opacity: 0.5; background-color: antiquewhite;">
+            </div>
         </div>
-    <canvas></canvas>
+
     </div>
     <script src="index.js" type="module"></script>
 </body>
+
 </html>

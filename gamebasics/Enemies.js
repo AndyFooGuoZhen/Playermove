@@ -2,7 +2,7 @@ import Enemy from "./Enemy.js"
 import PowerUps from "./PowerUps.js"
 
 export default class Enemies {
-    width = 70
+    width = 100
     height = 90
     middleSlotX = 360
     middleSlotY = 390 
@@ -10,6 +10,7 @@ export default class Enemies {
     score = 0
     canvas = null
     powerup = null
+    imgSrc = './enemy.png'
     constructor(canvas, cartridge, player) {
         this.scoreTxt = document.getElementById('score')
         this.cartridge = cartridge
@@ -24,7 +25,12 @@ export default class Enemies {
                     position: {
                         x: -this.width/2,
                         y: Math.random()* (720 - this.height - 360) + 360
-                    }, color: "red",
+                    }, 
+                    size: {
+                        width: this.width,
+                        height: this.height
+                    },
+                    imgSrc: this.imgSrc,
                     speed: {
                         x: 1,
                         y: 0
@@ -36,7 +42,11 @@ export default class Enemies {
                     position: {
                         x: Math.random()* (785 - this.width - 395) + 395,
                         y: -this.height/2
-                    }, color: "red",
+                    }, size: {
+                        width: this.width,
+                        height: this.height
+                    },
+                    imgSrc: this.imgSrc,
                     speed: {
                         x: 0,
                         y: 1
@@ -48,7 +58,11 @@ export default class Enemies {
                     position: {
                         x: this.canvas.width + this.width/2,
                         y: Math.random()* (720 - this.height - 360) + 360
-                    }, color: "red",
+                    }, size: {
+                        width: this.width,
+                        height: this.height
+                    },
+                    imgSrc: this.imgSrc,
                     speed: {
                         x: -1,
                         y: 0
@@ -60,7 +74,11 @@ export default class Enemies {
                     position: {
                         x: Math.random()* (785 - this.width - 395) + 395,
                         y: this.canvas.height + this.height/2
-                    }, color: "red",
+                    }, size: {
+                        width: this.width,
+                        height: this.height
+                    },
+                    imgSrc: this.imgSrc,
                     speed: {
                         x: 0,
                         y: -1
@@ -113,9 +131,10 @@ export default class Enemies {
             }
         })
     }
-
-    getScore(){
+    getScore() {
         return this.score
-    } 
-
+    }
+    clear(){
+       this.enemies.splice(0, this.enemies.length)
+   }
 }
